@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: kshitijazad/nginx
+        volumeMounts:
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/conf.d
+      volumes:  # This should be under spec.template.spec
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config
+          items:
+          - key: default.conf
+            path: default.conf

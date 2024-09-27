@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microtwo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microtwo
+  template:
+    metadata:
+      labels:
+        app: microtwo
+    spec:
+      containers:
+      - name: microtwo
+        image: kshitijazad/microtwo
+        ports:
+        - containerPort: 9002

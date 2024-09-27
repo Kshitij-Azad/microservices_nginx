@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  microone:
+    image: kshitijazad/microone  # Replace with your actual image name
+    networks:
+      - my_network
+    ports:
+      - "9001:9001"  # Expose on port 9001
+
+  microtwo:
+    image: kshitijazad/microtwo  # Replace with your actual image name
+    networks:
+      - my_network
+    ports:
+      - "9002:9002"  # Expose on port 9002
+  microthree:
+    image: kshitijazad/microthree  # Replace with your actual image name
+    networks:
+      - my_network
+    ports:
+      - "9003:9003"  # Expose on port 9003
+
+  nginx:
+    image: kshitijazad/nginx
+    ports:
+      - "80:80"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge  # Corrected this line

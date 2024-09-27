@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microthree
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microthree
+  template:
+    metadata:
+      labels:
+        app: microthree
+    spec:
+      containers:
+      - name: microthree
+        image: kshitijazad/microthree
+        ports:
+        - containerPort: 9003

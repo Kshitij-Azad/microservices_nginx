@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microone
+  template:
+    metadata:
+      labels:
+        app: microone
+    spec:
+      containers:
+      - name: microone
+        image: kshitijazad/microone
+        ports:
+        - containerPort: 9001
